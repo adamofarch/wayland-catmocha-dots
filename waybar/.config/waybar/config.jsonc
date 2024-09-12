@@ -1,0 +1,136 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 22,
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["memory", "cpu", "clock", "hyprland/workspaces"],
+    "modules-center": ["custom/media"],
+    "modules-right": ["tray", "pulseaudio", "network", "bluetooth", "backlight", "custom/power"],
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+	      "sort-by-number": true,
+	      "all-outputs": true,
+	      "active-only": false,
+	      "on-click": "activate",
+	      "disable-scroll": false,
+	      "on-scroll-up": "hyprctl dispatch workspace -1",
+	      "on-scroll-down": "hyprctl dispatch workspace +1"
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "custom/media": {
+        "format": "{icon}  {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "chrome": "",
+            "firefox": "",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl play-pause",
+        "tooltip": true
+    },
+
+    "clock": {
+        "timezone": "Asia/Kolkata",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d/%m/%Y}",
+        "format": " {:%H:%M}"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip-format": "{percent}%"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{icon}",
+        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": " ",
+        // "format-source": " {volume}%",
+        // "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "portable": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+	      "smooth-scrolling-threshold": 1
+    },
+    
+    "bluetooth": {
+	      "format-disabled": "!",
+	      "format-connected": " {num_connections}",
+	      "format-on": "",
+    	  "format-off": "!",
+    	  "on-click": "blueman-applet",
+	      "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{icon} {device_battery_percentage}%",
+	      "format-no-controller": ""
+    },
+
+    "network": {
+	      "format": "{ifname}",
+    	  "format-disconnected": "Disconnected",
+    	  "tooltip-format": " {ifname} via {gwaddri}",
+    	  "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    	  "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    	  "tooltip-format-disconnected": "Disconnected",
+    	  "max-length": 50,
+	      "on-click": "nm-applet"
+    },
+
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown",
+        "format": "",
+    },
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "sh -c '(wlogout --protocol layer-shell)' & disown",
+        "format": "  "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    
+
+}
