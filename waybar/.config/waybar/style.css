@@ -80,6 +80,11 @@ button {
     border-radius: 5em / 5em;
 }
 
+#custom-icon {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 #tray {
     color: @peach;
     background-color: @surface0;
@@ -90,7 +95,9 @@ button {
 }
 
 #memory {
-   color: @yellow;
+    border-top-left-radius: 5em 5em; 
+    border-bottom-left-radius: 5em 5em;
+    color: @yellow;
 }
 
 #window,
