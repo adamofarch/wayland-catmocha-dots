@@ -1,5 +1,3 @@
--- return { require("lspconfig").pyright.setup({}) }
-
 return {
   {
     "neovim/nvim-lspconfig",

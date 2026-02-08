@@ -1,5 +1,5 @@
 {
-    font-family: "Fantasque Sans Mono";
+    font-family: CaskaydiaMono Nerd Font;
     font-size: 18px;
 }
 
@@ -38,7 +38,8 @@
 }
 
 #text:selected {
-	color: --wofi-color0;
+	/* color: --wofi-color0; */
+  color: #000000;
 }
 
 #entry {

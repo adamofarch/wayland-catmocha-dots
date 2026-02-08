@@ -1,8 +1,9 @@
 @import "mocha.css";
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: UbuntuMono Nerd Font;
-    font-size: 14px;
+    font-family: CaskaydiaMono Nerd Font;
+    font-size: 13px;
+    opacity: 0.9;
 }
 
 window#waybar {
